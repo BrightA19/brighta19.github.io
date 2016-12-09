@@ -1,0 +1,44 @@
+.box {
+    position: relative;
+	padding: 25px;
+	margin: 40px;
+	margin-top: 20px;
+	margin-right: 20px;
+	border: 1px solid black;
+	box-shadow: -10px 10px 10px rgb(15, 75, 186);
+	border-radius: 5px;
+	background: #FFF;
+}
+
+.post-title {
+	color: black;
+	cursor: default;
+	
+}
+
+.post-title:hover {
+	color: #00F;
+	cursor: pointer;
+}
+
+.post-info {
+	color: #AAA;
+}
+
+.post-img {
+	position: relative;
+	max-height: 350px;
+}
+
+a {
+	display: block;
+}
+
+.sidebox {
+	position: relative;
+	padding: 20px;
+	margin: 20px auto;
+	right: 10px;
+	background: #FFF;
+	max-width: 700px;
+}

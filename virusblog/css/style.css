@@ -1,0 +1,48 @@
+body {
+	background: url("/img/background.jpg");
+	overflow-x: hidden;
+}
+
+.jumbotron {
+    background: url("/img/jumbotron.png") no-repeat fixed center;
+    background-size: 100% 100%;
+	height: 450px;
+}
+
+#title {
+	position: relative;
+	margin-top: 130px;
+	text-shadow: 0px 5px white;
+	text-align: center;
+}
+
+#subtitle {
+	text-shadow: 0px 1px white;
+	text-align: center;
+}
+
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+#img-right {
+	width: 45px;
+	height: 45px;
+	position: relative;
+	margin: 0 auto;
+}
+
+#img-right a {
+	display: block;
+	width: 45px;
+	height: 45px;
+	background: url("/img/base_45x45.png");
+}
+
+#footer {
+	background: rgb(51, 51, 51);
+	height: 65px;
+	border: 1px solid black;
+	padding: 2px;
+}
