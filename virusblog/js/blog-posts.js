@@ -30,7 +30,7 @@ var blogPosts = [
     {
         title: "Types of viruses",
         info: "Written by Edward and Bright",
-        pic: "/img/virus1.png",
+        pic: "./img/virus1.png",
         par: [
             "There are 3 different types of viruses and they all act differently.",
             "There are worms, trojan horses and viruses (why they just called it a virus is beyond me), but they all have the same end goal as any other living organism, and that is to reproduce and wreak havoc."
@@ -39,7 +39,7 @@ var blogPosts = [
     {
         title: "In depth",
         info: "Written at the correct time by Edward and only him",
-        pic: "/img/virus2.jpg",
+        pic: "./img/virus2.jpg",
         par: [
             "Yo, this is the part that is actually useful to anybody here, so let's get right into it.",
             "The computer virus at its most simplest is just any piece of malicious software (malware) that infects a sytem and reproduces by copying its source code.",
@@ -51,7 +51,7 @@ var blogPosts = [
     {
         title: "Positive Applicability",
         info: "Jobs",
-        pic: "/img/virus3.png",
+        pic: "./img/virus3.png",
         par: [
             "Believe it or not, you can actually get a job with hacking and making viruses. Big names like Facebook or Instagram, or other big businesses will offer good paying jobs to people who can hack into their system and give feedback.",
             "if you have the ability to make viruses or get around firewalls, then try to reach out and show off your expertise.",

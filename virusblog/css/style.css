@@ -1,10 +1,10 @@
 body {
-	background: url("/img/background.jpg");
+	background: url("../img/background.jpg");
 	overflow-x: hidden;
 }
 
 .jumbotron {
-    background: url("/img/jumbotron.png") no-repeat fixed center;
+    background: url("../img/jumbotron.png") no-repeat fixed center;
     background-size: 100% 100%;
 	height: 450px;
 }
@@ -37,7 +37,7 @@ body {
 	display: block;
 	width: 45px;
 	height: 45px;
-	background: url("/img/base_45x45.png");
+	background: url("../img/base_45x45.png");
 }
 
 #footer {
