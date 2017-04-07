@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Virus Blog</title>
+		<link rel="icon" href="./favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css" />
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./js/angular.min.js"></script>
+		
+		<link rel="stylesheet" href="./css/blog.css" type="text/css" />
+		<link rel="stylesheet" href="./css/style.css" type="text/css" />
+		<script type="text/javascript" src="./js/blog-posts.js"></script>
+		<script type="text/javascript" src="./js/script.js"></script>
+	</head>
+	<body ng-app="displayPosts">
+		
+		<header>
+			
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</button>
+						<a class="navbar-brand" href="#">The Virus Blog</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/">Home</a></li>
+							<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Posts<span class="caret"></span></a>
+								<ul class="dropdown-menu" ng-controller="myCtrl2">
+									<li><a ng-repeat="post in blogPosts" href="#{{ post.title }}">{{ post.title }}</a></li>
+								</ul>
+							</li>
+							<li id="img-right">
+								<a href="http://bronxsoftware.org"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			
+			<div class="jumbotron">
+				<div class="container">
+					<h1 id="title">The Virus Blog</h1>
+					<h3 id="subtitle">A blog about computer viruses</h3>
+				</div>
+			</div>
+			
+		</header>
+		
+		<section>
+			
+			<div class="row">
+				
+				<article>
+					<div class="col-sm-9">
+						<div id="posts" ng-controller="myCtrl">
+							
+							<div class="box" ng-repeat="post in blogPosts" id="{{ post.title }}">
+								<h2 class="post-title">{{ post.title }}</h2>
+								<h4 class="post-info">{{ post.info }}</h4>
+								<img class="post-img img-responsive center-block" src="{{ post.pic }}" /><br>
+								<p ng-repeat="par in post.par"> {{ par }}</p>
+							</div>
+					
+						</div>
+					</div>
+				</article>
+				
+				<aside>
+					<div class="col-sm-3">
+						
+						<section>
+							<div class="sidebox center-block" ng-controller="myCtrl2">
+								<h3>Recent Posts</h3>
+								
+								<div id="listofposts">
+									<a ng-repeat="post in blogPosts" href="#{{ post.title }}">{{ post.title }}</a>
+								</div>
+							</div>
+						</section>
+						
+						<section>
+							<div class="sidebox center-block">
+								<h3>Links</h3>
+								
+								<a href="http://www.newsnish.com/tips/tech-tips/recovering-tips-from-viruses-worm-and-trojan-horses/">Newsnish</a>
+								<a href="http://www.i-t-ltd.co.uk/anti-virus-and-security-systems">Intergrating Technologies Ltd</a>
+								<a href="http://globaltechconsultants.org/?q=content/what-difference-between-virus-worm-trojan-and-rootkit">Global Tech Consultants</a>
+								<a href="http://wallsdream.com/wallpaper/hacker-hack-hacking-internet-computer-anarchy-sadic-virus-dark-anonymous-code-binary/O72G">Walls Dream</a>
+							</div>
+						</section>
+						
+					</div>
+				</aside>
+					
+			</div>
+		
+		</section>
+		
+		<footer>
+			<div class="container-fluid" id="footer">
+				<p style="color: #FFF; text-align: center; margin-top: 10px">All images belong to their rightful owners.<br>Copyright &copy; 2016 TheVirusBlog <b>No Rights Reserved</b></p>
+			</div>
+		</footer>
+		
+	</body>
+</html>
