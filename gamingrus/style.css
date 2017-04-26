@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'AR Destine';
+  src: url('./ardestine.ttf');
+}
+::selection {
+  background: #A0F;
+}
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+#cvs {
+  background: #000;
+  display: block;
+  position: absolute;
+  box-shadow: inset 0 0 50px #1CAB0F;
+  transition: 0.4s box-shadow;
+}
+#ctr {
+  display: block;
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
+
+  top: 10%;
+  opacity: 1;
+
+  position: relative;
+  margin: auto;
+  margin-top: 8%;
+
+  border: 10px solid #1CAB0F;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #1CAB0F;
+  transition: 0.4s box-shadow;
+  
+  animation: appear 0.8s ease;
+}
+#tle {
+  margin: 20% auto;
+  font: 110px 'AR Destine';
+  color: #1CAB0F;
+  text-align: center;
+  text-shadow: 0 0 30px #1CAB0F;
+  transition: 0.4s text-shadow;
+}
+/* If there's another way, mind telling me? ↓↓ */
+.hover-tle {
+  text-shadow: 0 0 50px #1CAB0F !important;
+}
+.hover-ctr {
+  box-shadow: 0 0 50px #1CAB0F !important;
+}
+.hover-cvs {
+  box-shadow: inset 0 0 120px #1CAB0F !important;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    top: 30%;
+  }
+  to {
+    opacity: 1;
+    top: 10%;
+  }
+}

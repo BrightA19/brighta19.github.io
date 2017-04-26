@@ -2,93 +2,29 @@
 <html>
 
 	<head>
+	  
     <meta charset='UTF-8' />
+    <meta property="og:site_name" content="Brighta19" />
+    <meta property="og:title" content="Gaming R'Us" />
+    <meta property="og:description" content="A simple website." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://brighta19.github.io/gamingrus/" />
+    <meta property="og:image" content="/pic.png" />
+    <meta property="description" content="Gaming R'Us static website." />
+    
     <title>Gaming R'Us</title>
+    
+    <link rel="stylesheet" href="./style.css" />
 
-    <!-- jQuery JS -->
-    <script type='text/javascript' src='./jquery.min.js'></script>
-
-    <style>
-      @font-face {
-        font-family: 'AR Destine';
-        src: url('./ardestine.ttf');
-      }
-      ::selection {
-        background: #FFF;
-      }
-      html, body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-      .body {
-        display: block;
-
-        position: absolute;
-
-        background-color: #000;
-        box-shadow: inset 0 0 50px #1CAB0F;
-        transition: 0.2s box-shadow;
-      }
-      .ctr {
-        display: block;
-        width: 400px;
-        height: 400px;
-        cursor: pointer;
-
-        top: 20%;
-        opacity: 0;
-
-        position: relative;
-        margin: auto;
-        margin-top: 8%;
-
-        border: 10px solid #1CAB0F;
-        border-radius: 50%;
-        box-shadow: 0 0 30px #1CAB0F;
-        transition: 0.2s box-shadow;
-      }
-      h1 {
-        margin: 20% auto;
-        font: 110px 'AR Destine';
-        color: #1CAB0F;
-        text-align: center;
-        text-shadow: 0 0 30px #1CAB0F;
-        transition: 0.2s text-shadow;
-      }
-      .hover-h1 {
-        text-shadow: 0 0 50px #1CAB0F;
-      }
-      .hover-ctr {
-        box-shadow: 0 0 50px #1CAB0F;
-      }
-      .hover-body {
-        box-shadow: inset 0 0 120px #1CAB0F;
-      }
-    </style>
-
-  <body>
-    <script src="particles.js"></script>
-
-      <div class='ctr'>
-        <h1>Gaming<br>R'us</h1>
-      </div>
-      
-    <script>
-      $(document).ready(() => {
-        $('.ctr').animate({
-          opacity: 1,
-          top: 0
-        }, 1000);
-        $('.ctr').hover(() => {
-          $('h1').toggleClass('hover-h1');
-          $('.ctr').toggleClass('hover-ctr');
-          $('.body').toggleClass('hover-body');
-        });
-      });
-    </script>
 	</head>
+  <body>
+  
+    <canvas id="cvs" width="0px" height="0px"></canvas>
+    <div id="ctr">
+      <h1 id="tle">Gaming<br>R'us</h1>
+    </div>
+      
+    <script src="script.js"></script>
 
   </body>
 
