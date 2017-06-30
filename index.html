@@ -1,14 +1,93 @@
+<!-- Well hello there. -->
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Hello</title>
+
+  <meta charset="UTF-8" />
+  <title>Bright Amoateng</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  <style>
+    
+    body {
+      background: linear-gradient(to right bottom, #0aa, #055);
+    }
+    span, p {
+      display: block;
+      color: #DFF;
+    }
+    span {
+      font-size: 4rem;
+    }
+
+    .bbtn {
+      display: block;
+      width: 50%;
+      min-width: 150px;
+      height: 60px;
+      margin: 10px auto;
+      padding: 15px;
+      color: #000;
+      background: #FFF;
+      text-align: center;
+      outline: none;
+      transition: background 0.1s, box-shadow 0.1s;
+    }
+    .bbtn:hover {
+      color: #000;
+      text-decoration: none;
+    }
+    .bbtn:focus {
+      color: #000;
+      text-decoration: none;
+      box-shadow: 0 0 10px black inset;
+    }
+
+    #gmail {
+      background: #f77;
+    }
+    #gmail:hover {
+      background: #f99;
+    }
+    #gmail:focus {
+      background: #f55;
+    }
+    #github {
+      background: #08a;
+    }
+    #github:hover {
+      background: #2ac;
+    }
+    #github:focus {
+      background: #06a;
+    }
+
+  </style>
+
 </head>
-
 <body>
-    <!-- Are you looking at my HTML? This is an invasion of privacy! -->
-    <p>I see you have found me.</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAHdElNRQfhBAcCMzpIeJQSAAAVuUlEQVR42u3be5Cm+VUX8M9zeZ/30vfbTM99dmb2kk0glw0RAyISiZgAFVKAqKhlhUsF1Ih3pQqkUCgUqViWoUSJZSlYlAEBc4EkXAKCLLAJm2zCZjc7s7Mz0zPT9+73+tz9431Y+c+e3d6EP/b3R3dXV1c/5/ue3znne77nPLx8Xj4vn5fPy+cLcILj/5eVD3q93FjkMqgFXmWs8M1+3f8Rf6FR///P93iDJf/ED+AXfMQ79YRCsTcSCGo/5x26ApEZsHVMTz42j7zOxwVqr/AZ//Tyl719+dLgY9Gj/3X/v6QSlWAhWut8VXKl+9DgL90aE6jVah5waFvxJwcIX+/dLoUXF77rzSv/bP+LQyfz7sbck7cev9a901pon26P187MlWvDQfFTO49++MnfmSjq0axlF7zKj7vhdbb/JACpfdfJ7gP/c5Kt/+PvP/vI73lW12UPiw0NjQX2PemCnrJsbxz8+vITZzY//fs/eDDXfnB0YvOR4ozPWvNRv/qFAPJagXlPeZ33h1rnHn7Hvzo9kxYzr9/q/qqrYld8hfNS+wb6nrLljDNGrllwyUxWfbLz8eHFbLX1+ML7Z34t2Wv5Eg++QFuiFwPkbfhH/n1UJ29dDc5euHzf28PXdC70W5+yo3bRotLn3LUntWNfbsuintiCwH504/T8I2cud0+Fry2/Pn9dddi9/pPlp16gLS84E172bp/0i8lvv/l9f8Hq0xdmTz0821nO7AkEcpecVrtu14KuOalFbblZiZaxwEmh23oOrdEN37Lwxuq//d779O04cKD+vHjkN3ybkd9J3vF3Lv7Ywp+9/qrnzp1b1LsZnNB2xyed9RpdzxlbtWDRobsCiRWnxQ5EYhMbMoFrUutWRZ3sS85ffu7G3tiywvDzAORhP2LL7Oylvzf53mJh21Xrzvgtfeckrpr1WvyBzFnrOvakTjljXtcphcJA16Nu6Al1nTaHLZ1g/fzFk/2tjT1pvfcDLy2QUOU3vdbc+u6/vvG3d3uRbW1XPO2OGeeVEheNPW7JJQsGDq253xldI7HEs+7asmpfZMFpr7Ks79BEqRc4v/7w2v6N29+7ozjnR3zgpQHyHv/L2F8J/+Ir+z+8+623okUtNz1g16ae15qXOqdlw7rzUpVTzisNtcyaNVTbto0Zz2hpWXXWtj1bdlz1KdvSpflHzpxw6z3PbVr3kSNadk/B/m+9003X1x9/5/5fu3NfLtR2W6xt27yOdbtOCB06Yc+T5jzshl+zYahw3hlzxm552qq2HasSZz1l17bbSrWJkczsQu+bTz34vn/wix/9ypfiar3dj7llcnHux3e+7fpSz0RX3zWvNFKoLWqb1bUnd8fT1nyx5zxpV2RB2w1PYMeTRi5o2ZG5z2m3bNg20XfbHamOfT299faZt/7cVvalHj1ej9Sec91wbeZHN7/2mpEFI5GrFsVisb62jtSzRm76jGVX3PKMA8vWbfhDB3I39Qy1jLQU5q16XGpgoNK2pG2g0pHZlj84f6n45LF75Ftt2+qt/NDgr18LdiT6UkPbLimVtqXO2Pe0mz7nmmWPqHzWkyqX3fC4a3K5VYwEJubtaEt8ylBm2Yp5gR2VnlhhTjlfrp7/pTJ7g98/gn3hUYFcseTCN1bvuBsEYhOZ2ND9arGJfStue9LAttorXJL7nD19Cz7jGQdOWdFVy7Qtamvrqo11jXT1tNXGAmPbtm26ozL8hjvf8pQHjtMjz7khmwv+5fiBQ4dSlZ6OwKw9LdsyHUOVtlMeVNu2Zd+usdhYoHRJqiMRCc1btCB2zsQ1oVmhUstdd6QipdJEYiGMT67//I3RE8fnkY8Z6L9y+Pq+gT2R2ozIsn2BPQd23LYvMGPeXbftu2rHXbXMGV3LSvNqmZ4ZpVO6Fu15Rkvortxpu64rBEqFQmZHpHt6b7F/JAuPGOwrYvXr+ksDO1pqZGqlUi51XSYz55TKH9gQmbhtXt+SSKrWlei4KxBYNaNnKDI2q2/PnNB1z5hRGDZNVq1UFZOfrp49GkE/IpBrfjl422sGUqVIYsaByFBpR2DgjFjkSTdsiM3LDYVyhYFaoKWW6ljSU1rU0xILHIi1td2xL9E1kqnUCGR2D6595ELx60fqNY4IZMupzt1zsX2RGV0HAjtqW1IjkX17hjaNdCzI7avVUnsqoQVjHSOJjkQboTWxrpE5h3Ydqgyl2loqgRxki6df/bGPHs0jRwr2wNew3HrnZD3X0xXYlhkaelbLhtv6rrluKFKq7GmbNTSRamlLdMVKC5atOWnVrBN6FixbMKsjUomFSoFILBEqjcPTs3/qIxcOnz4uj/xpl919OLrvtnW5XN+BkcyefaFNqb47EnNyiVKJkb6efQfmdSVaVixYNGtRItIVKFV6lqxYsWnfni1jE4VahaHDR+5/ZXLjKDYeCcgTvslPvOlgIZAZSW3ZFRnYNbbtEHe0dGRm1FJruoYiLfNKkcwJixbNm9cxJ1RJBFKhQFvXvGWbbhjbMW5iIlDbtFFXR7paRwLyFsFS8eWbEpv65gyUKht2DQyMHSqsqQxl5pwXO7RqTigQWtYVm7dixbyuSKUWqeRis2I9MzraIpkdE4FagMCw2iqOJhUdCcgbVOv7V26ZxaHMocie63JtfSMTSZMGll3AyJoZu+ZtabsitOaEU5abaKgVSpGOSluolAhQy+zryxoYlO3y1NFaxSMBCVXLu/N7MoVUy0jtlgOJSGoiEDR1Zd2BHZesy523reOMU01srJrFWChQCQRCJSKhygwKYxftuqlGrBJr1+XxAbluEmb21fraBg6NbBkp5IZKoVqtbc6eO2blSot2RZYsOm9VaVZHLJeJ1SqhUq0U08AiMuukB+3pi9RCq9snnigchQIfCUiqHA/zoVoq1ndgS99ErfXHDJvRFZnXdkJPbsElz+lY1W6SayDWU5mohApVw5BqlYmhCrMuuO0JFeZd3r5yd3J8Hmnr9vuTwgQTqZE9uVIoVDWXoKNjXtt5pYc8IENlbEXcxMJU7A0FIpVpCasUzddKoMKMxP2umkjMi07unqzuHBuQDVE+yWo5UuwZNHe8QKEtsqxtTseyeZFlFSbOibVQi7UFKtP/UikaYKVcJVch1FEKnXfSNex7zvJxxsizovH64YzcoULtUKGjFgtFCm3zliyorShkDt1xXqWt5a5cgpZI1ZhcoVApVWqhUKkSinQVassesKFQGRZBdjSCfiQgT+kffvXN+VfvKaVKqVAk1DZSiVx00aZVldqKkQ2VvnPW9eQGWhId1EIthVKgFqq0VHK1WC0SCtDWctFJt5T6+bX8aJLjkYDsq0flM9OgLqQKsVpbYSiy6jXOuS6WmBh5RMe+Q5nKjLNuGFlpPvFQLVdoqZvUWwpl2shF6uYZM5ZsGsvyw+wYgdTeXX/4ZmB6tzO1UGGi1NLzRXr2LKuckZq3bgW5XCDQc0WmQAtlc4lCFCKBGLEMLaVCoFaJ9CRSQR4VxwiEpyS3giKNR+omv1RaEoEVywZYtuy0ZaWeqGG7pUSMjgwETboNVSphkwimHWGglDTwSi0zAi1BNimOkWtxV/lsdzBZrGlk8mmybImNZdbMO2fVolAokoifZ0ylULspf6VCJhCr1FpNOYSoISm1QKBladpgZZMjTuWOCGRDdCO5Uy1Ob/b0alQChLadMmfZsp5Ww51CYdN9x03Hl0vlUmOFQCbSRqpSGBlLG5jESokVkUKUVsd7tW4Jtpc/Vz00zTxl0whFakOLzrrogmU9SZOSW8LGc7lxI4UOZCqFSFumK5HKFApDA7UCgVggFJrXsS/KVsr0OIHcsTH+xs+EXxs0KbJsMlAtcdZDrljQa65b1FyPwKGhUN++fX2pwIyOlkgg+2NeGhkKZabFtWUs0jbnrrnBlxZXffr4gPx93yr9RDsLklgmaFhSbdYlr3DBklioEpnGRKmW2bMp86zH3FWbt2DdkhMCkdDYRN/Qri2BwB2ByJw1fT0LVt2a9P7He7K/cZwe+RabTt/8w3QrmQ7Ip8EZWXTRA1Z0GtYUGIuEUgObNty067abai0DAYZqLCgcGNhz2w37JgZSoUTPosK8Vzpj938vv2+1ESKOCcjQ11qb+2T8mN+yR9P7zTrtQet6WqakI7VnbGLLs02pY9a6VEsiVinsW7CKzJbrbtg3lk17D4HIjkxmbMn5pz80fLe/e5xAHvLQXP23Xtl9i/f6Dw60tMUWnXfRkgSBSGrPXXcbUtmWGdm14UChY9GcoDF4RiC27aptByaqZqlj2hRHZiRaeltf4+rRDDwqkAPxhc98yQ3nfJU975fpiCxbsKCLQqAyse/QgaGhgUM33DVWOmW+0VYiHbPmLUqM1HaN5HK1QGHRnqHSWQtaZszNtI883D0ikIFkcjN91OMe9nq5x2xZEFuzgFCtUkmlJkg9Z9dEJjGr42G5bYkLlsVWzeuaccYZy1gUKwwkzrkrRcuSjp6F85tReDQWf1QgiZnd1a21sx2FXfcb2Uagq1Q24R/oWRao9d3nPrGeUKBQGluVOOeUwqw5HT2VKz7nPqG2oJlGr4FFpy0IJTs/Xb7reD1CZzi/uWbWOblDE9dlz9NAYpFQ16I1JzxkbGhgJFcqTEyLWqnTiKaBUOycc+4IlAJd5EIzemYtmpVXncfebfd4gcRW8mR3yYxltbHS6z2rbIh33fCrQKVnQabvoKHqE4XQgkDPBcsCsUSN0Ix1Y7HUlGXN6DS6fSxi6+xvB+aPF0jXd1bfvXcakRset+VBhT2xQiVuGFhkGs6xllmL1gzlUoVM5IRZAVoNB45FFs1IzDTUvSWSaIka9SuuA+85XiAt3y56dOY766iypeNB97nfNYtCpbyJhWkf39LSkUu0zRhLFdqWJCZyLS0QaOmY1xWbFaoalWXavsUo2lnviCiODqTSE3w0/lT0mlzmonWXzTkrfF4MqpqQJxCoJU0ctBvzYplapCtqupNQZNaCQttcQ26IFVKBXBaM7mEJ64ijt5OuONxo/btW3rNi3bJEbMWMaX8ylRIyhVzRZLJp4Zu3YFZPSyDR1RI1lzDUMWtZohZo6+mIm04mNdCvRuX4uIHwrI7gZ4vfbLkskRs1PbYGQNloJKlM3qTjWKKtpSUSa4lNDGSCJtjb5iwqDIybRitpJKLUxDibTI4mzt0TkAcN1AfxeybjBa9w1tBI3UDIVAKlrAnsQq1oOr+gyV27btswQipvrmGFRMvASCZXKIyfT9iTIs2zIwO5h12UEyrRB9KfH//lObOGzaeQNwObnKYiJDJDrWbM3FJJDe1JLVtr6P5ULcmUmBNLHTRNWSGTGhnJ8uBoxPdegTzgD0WT3s+03161R1aVUrGoUc0jhbKZ91bNT9P8UxkYmgj1zDcK/lgpl5koleaE+kIdicLE0FgqyDpHd8i9bQe19fh474YrWRPUdSNOh2qhurlgWdN4Vc016cu1VSZ2MCOUm6Cvb2zY9OyJoBlcDGVKcR7cwzrwPQG5ZEvVrw+m1yVqWqlpLEzV9WnAT2i6xNzEyEhHR+m6Xc9adp+ulsTEoT0b+mI9uYlQKTORi4TjPD96/r3H5cyRLMv3u2oJxs1wfwqmRiqSN6pugbGJVGzOjJZN1z0l85hT1i2p9O3ZkDqplku1VDKpWqQeBEdUGV8AkNRwlH1k902BjlD6/MSpbAI4UgmEJqomCjKBJWvaSie80UmbJg4cWFEa23dgRSLWaoI/1JkOG+520iNy+HsHEhka/ve9t6Vf2lNbzONW1Mxg/18uilSN/Fk2RXBeT2TSlNCBgV1bNu04kJk1o4XAnBSVTChXXTsouy8VkMuu+vRz2bcP33X3Qvnbrz7vb05pRd1IclEjBE03UCp0tc00MlHZTKnmRFpG9ht5taNUiRp1cjr6qar605GPH9myIxfEPzrP+jrZE/d/562v+8p/3v5AVUymGUYla0yPdPSameGCGbOCpsSlxkbGcrVCx7o1M9qNAl8oRLpmpqOH3fpTgUdeKo/wVX7X70iquXRX/Mnydn4OAoVc3AxGp3GTWzTX1P5pAphGTakytq/QpRG6p8k6NKdlOBXJr7rOj750QHhD8/3XhNey3yj+ailqOpHcNFYCtUiv0dlzQ2OVWICkSbAdiYlMT22iL1ZbbvTgVKH43dv75+/BqhfxllBktwh+Kn9bORM0I/+8UdM1Ad8yMrTlljvSphOZemVsSW7TXlNpuh5wxpzEoUMDeVb/yql7uvcvAkgqE/xG+bHyLaNmhFCien4wEIhEzUj7pL5QW2zPjlv6jT862jpWXbJuRUtqV99Y8Uzwexyd+74oIF/tFw2HwXuLN6XtUq/xUqAQCuQmzZDnso6uysjQWCR3YM9A1qwbdM3pmcOBQ3tyGT+7fevUkdvcFwlkSg99JP/N4s/nColapKVuxtDEAl1LeupmrBM4bFYD2zIHzWwr1lY5MDE2kqs+Hf7nlXu05UUB+UYfcvOw/tHskXqpVjaegKIhL0mzATlts0KRSGnQ9DIkCoFEbGjPeDpjzMJ/U1/t3GNleFFv9PAVSvG1YlB/RZlMFwEymczE2EQm0GlkosLASGpi374D+0ZqhVhHS23o0ESB8GfCHw7y8p4u1osG8n5vVdTZY8l+9eV5u2pqd9G0vJWW3lQRaaBNTJrJOpVYLGk8ODZQKIVPBd9db/Af79GSFwmED3iLVv3g79/dLL8876byZsI4pS5dMxLTvn5sZKJs5LzpZDho/rKSGcoZhP+w/NWWwGOfbyB80Nfb9JlPrN4o3pjNlY20EDdr412xquHC1fPbc21Js5BT60iURkbKMvih1o+raz9xz1YcAxDe783W3H6i92T9BstTkpJI9LSFzS5WoIVQS9estlAo0TFnRUvfvlTw3vj7yzTwn16ADccChF/yVjOKp6vf9UXl2envqqYgaqS6xIxErC1WqKcTEHM6xrYN1B8I3lXv1/jEFw4IH/KVAvWt+FeCperhIgoaxbGWGzfUPmlE6louaKp+LrVjS/Zo9B3BjUrsJ1/Q848NCB/153QU++GH69v5Q+Vy2SzOTCl61TDfwMR+o2NNp7p9Gw4+m397/kRX9YKuFcf+PvsPNxpi9orqe3xTvNgSN+S+JW50+GkDXIrl+oZG9m6W74g/HOvcc9J9yYDAD4rkopYvq78jeHO18kc7RZ1mVyJr2uBQaeDQ5LPlu3q/PNH2My/iqS8BEP5FszdaJfWryzcVfyZ/VXoi7fwR5agahpwqTLLsw9X3dT+RivzCi3rmSwIEflBlqvwOO8Xp4ZX0oeKU1XqlXqo7FYoqG1e36g/WHwz6odKHXuTzXjIg0/N95mzLjWRq7/UNcZDUMWRVUR5OVuvpSuBR3//8ggGZnu/Qt22p2ZubeiqXY6Ttw58PE14+L5+Xz8vn5fPSnP8LWwoaQokdgMQAAAAldEVYdGNyZWF0ZS1kYXRlADIwMTUtMDMtMDZUMTQ6MzI6NDEtMDU6MDChF3c6AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA3VDAyOjUxOjU4KzAyOjAwJP5upwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wN1QwMjo1MTo1OCswMjowMFWj1hsAAAAldEVYdG1vZGlmeS1kYXRlADIwMTUtMDMtMDZUMTQ6MzI6NDEtMDU6MDD+pgEOAAAAHnRFWHRDb21tZW50AFJlc2l6ZWQgd2l0aCBlemdpZi5jb20rEHlJAAAAAElFTkSuQmCC" width="100"/>
-</body>
 
+  <div style="height: 30%;"></div>
+
+  <div class="container">
+    <span class="text-center">Bright Amoateng</span>
+    <p class="text-center">A web programmer, who could do more ...</p>
+  </div>
+
+  <div class="container" style="top: 10%">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <a class="bbtn" id="gmail" href="javascript:alert('bright.a19@bronxsoftware.org');">Gmail</a>
+      </div>
+      <div class="col-sm-4">
+        <a class="bbtn" id="github" href="https://github.com/brighta19">Github</a>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+
+</body>
 </html>
