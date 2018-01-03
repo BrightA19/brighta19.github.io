@@ -1,0 +1,75 @@
+
+<body style="margin: 0; width: 100%; height: 100%; background: #111; overflow: hidden;">
+<script>
+
+var cvs = document.createElement("canvas");
+var ctx = cvs.getContext("2d");
+cvs.width = window.innerWidth;
+cvs.height = window.innerHeight;
+
+var interval;
+
+
+var circles = [];
+
+function Circle() {
+  this.x = Math.random() * cvs.width;
+  this.y = Math.random() * cvs.height;
+  this.r = 0;
+  this.opacity = 1;
+  this.maxlife = Math.random() * 80 + 20;
+  this.life = this.maxlife;
+  this.color = Math.floor(Math.random() * 359);
+  this.rMax = Math.random() * 80 + 20;
+  this.update = function () {
+
+    this.opacity -= 2/this.maxlife;
+    this.r += 2/this.maxlife * this.rMax;
+    this.life -= 2/this.maxlife;
+
+    if (this.opacity < 0)
+      this.opacity = 0;
+
+  };
+  this.draw = function () {
+    ctx.save();
+    ctx.beginPath();
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = "hsl(" + this.color + ", 100%, 50%)";
+    ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.restore();
+  };
+}
+
+function gameLoop() {
+
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+  for (var c in circles) {
+    if (circles[c].life < 0) {
+      circles[c] = new Circle();
+      continue;
+    }
+    circles[c].update();
+    circles[c].draw();
+  }
+  if (circles.length < cvs.width * 2) {
+    circles.push(new Circle());
+  }
+
+}
+
+
+cvs.style.position = "absolute";
+cvs.style.background = "#000";
+window.onblur = () => { clearInterval(interval) };
+window.onfocus = () => { interval = setInterval(gameLoop, 1000/30) };
+window.onresize = () => {
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+};
+document.body.appendChild(cvs);
+
+</script>
+</body>

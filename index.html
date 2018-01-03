@@ -1,98 +1,76 @@
 <!-- Well hello there. -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <meta charset="UTF-8" />
-  <title>Bright Amoateng</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-  <style>
-    html, body {
-        width: 100%;
-        height: 100%;
-    }
-    body {
-      background: linear-gradient(to right bottom, #0aa, #055);
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
-    span, p {
-      display: block;
-      color: #DFF;
-    }
-    span {
-      font-size: 4rem;
-    }
-
-    .bbtn {
-      display: block;
-      width: 50%;
-      min-width: 150px;
-      height: 60px;
-      margin: 10px auto;
-      padding: 15px;
-      color: #000;
-      background: #FFF;
-      text-align: center;
-      outline: none;
-      transition: background 0.1s, box-shadow 0.1s;
-    }
-    .bbtn:hover {
-      color: #000;
-      text-decoration: none;
-    }
-    .bbtn:focus {
-      color: #000;
-      text-decoration: none;
-      box-shadow: 0 0 10px black inset;
-    }
-
-    #gmail {
-      background: #f77;
-    }
-    #gmail:hover {
-      background: #f99;
-    }
-    #gmail:focus {
-      background: #f55;
-    }
-    #github {
-      background: #08a;
-    }
-    #github:hover {
-      background: #2ac;
-    }
-    #github:focus {
-      background: #06a;
-    }
-
-  </style>
-
+    <meta charset="utf-8">
+    <title>Small projects</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div style="height: 30%;"></div>
-
-  <div class="container">
-    <span class="text-center">Bright Amoateng</span>
-    <p class="text-center">A programmer, who could do more ...</p>
-  </div>
-
-  <div class="container" style="top: 10%">
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-4">
-        <a class="bbtn" id="gmail" href="javascript:alert('bright.a19@bronxsoftware.org');">Gmail</a>
-      </div>
-      <div class="col-sm-4">
-        <a class="bbtn" id="github" href="https://github.com/brighta19">Github</a>
-      </div>
-      <div class="col-sm-2"></div>
+    
+    <iframe id="view" src="home.html"></iframe>
+    
+    <div class="cover" onclick="toggleMenu()"></div>
+    
+    <div class="menu">
+        
+        <div class="project home" onclick="setView('home.html', 'black')">
+            <p class="project-name">Home</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/gamingrus/index.html', 'black')">
+            <p class="project-name">Gaming R'us</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/virusblog/index.html', 'black')">
+            <p class="project-name">The Virus Blog</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/mouse-strokes/index.html', 'white')">
+            <p class="project-name">Mouse Strokes</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/animated-squares/index.html', 'white')">
+            <p class="project-name">Animated Squares</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/particles/index.html', 'white')">
+            <p class="project-name">Particles</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/circles/index.html', 'white')">
+            <p class="project-name">Circles</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/base-logo/index.html', 'black')">
+            <p class="project-name">BASE Logo Animated</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/base-logo-2/index.html', 'black')">
+            <p class="project-name">BASE Logo Animated 2</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/squares-circles/index.html', 'black')">
+            <p class="project-name">Squares and Circles</p>
+        </div>
+        
+        <div class="project" onclick="setView('projects/characters/index.html', 'black')">
+            <p class="project-name">Characters</p>
+        </div>
+        
     </div>
-  </div>
-
+    
+    <button id="menuButton" onclick="toggleMenu()">&lt;&lt;</button>
+    
+    <script src="script.js"></script>
+    
+    <script>
+        setTimeout(function () {
+            var m = new MouseEvent("click", {clientX: 6, clientY: 6})
+            menuButton.dispatchEvent(m);
+        }, 1500);
+    </script>
+    
 </body>
 </html>

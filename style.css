@@ -1,0 +1,114 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#view {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 148px;
+    height: 100%;
+    background: #0AF;
+    transition: left 0.5s;
+    overflow: auto;
+}
+
+.project {
+    display: block;
+    width: 100px;
+    margin: 20px;
+    background: #2CF;
+}
+.project:hover {
+    background: #6DF;
+    cursor: pointer;
+}
+.project:active {
+    background: #38F;
+}
+.project-name:hover,
+.project-name:active {
+    color: #FFF;
+}
+.project-name {
+    position: relative;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font: 16px Verdana, sans-serif;
+}
+
+.home {
+    background: #FFF;
+}
+.home .project-name {
+    color: #2CF;
+    transition: box-shadow 0.5s;
+}
+.home .project-name:hover {
+    background: #FFF;
+    box-shadow: 0 10px 50px #888;
+}
+.home .project-name:active {
+    background: #FFF;
+    box-shadow: 0 10px 20px #888 inset;
+}
+
+.cover {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    transition: color 0.2s, opacity 0.5s, right 0.5s;
+}
+
+#menuButton {
+    display: block;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 25px;
+    color: #05D;
+    border: 1px solid #05D;
+    border-radius: 5px;
+    background: none;
+    transition: box-shadow 0.2s;
+}
+#menuButton:hover,
+#menuButton:focus{
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 0 10px #08D;
+}
+#menuButton:active {
+    color: #FFF;
+    border-color: #FFF;
+    box-shadow: 0 0 10px #333;
+    text-shadow: 0 0 3px #000;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: none;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #08D; 
+}

@@ -1,0 +1,163 @@
+<body style="margin: 0; width: 100%; height: 100%; background: #111; overflow: hidden;">
+<script>
+
+var cvs = document.createElement("canvas");
+var ctx = cvs.getContext("2d");
+cvs.width = window.innerWidth;
+cvs.height = window.innerHeight;
+
+var interval;
+var keys = [];
+var mouse = {
+  pressed: false,
+  x: 0, y: 0
+};
+
+
+var image = {
+  player: new Image(),
+  sources: [
+    "https://i.stack.imgur.com/SsmWh.png",
+    "https://opengameart.org/sites/default/files/mage%20walking%20poses%20sheet%20copy.png",
+    "http://opengameart.org/sites/default/files/lpc-art/professor_walk_cycle_no_hat.png",
+    "http://lpc.opengameart.org/static/lpc-style-guide/_images/soldier.png",
+    "http://lpc.opengameart.org/static/lpc-style-guide/_images/soldier_altcolor.png",
+    "http://lpc.opengameart.org/static/lpc-style-guide/_images/princess.png"
+    // <<<<<<====== http://lpc.opengameart.org/static/lpc-style-guide/index.html ======>>>>>> \\
+  ]
+};
+var random = Math.floor(Math.random() * image.sources.length);
+var mousePrevPressed = false;
+var frame = 0;
+var player = {
+  x: cvs.width / 2,
+  y: cvs.height / 2,
+  w: 64,
+  h: 64,
+  spriteSize: [64, 64],
+  numOfSprites: 9,
+  spriteAnimNum: 0,
+  spriteDirection: 2,
+  velX: 0,
+  velY: 0,
+  s: 2,
+  a: 180,
+  speed: 1,
+  img: image.player,
+  moving: false
+};
+player.x = player.x - (64/2 * player.s);
+player.y = player.y - (64/2 * player.s);
+player.speed = player.speed * player.s;
+
+function gameLoop() {
+  if (keys[37] || keys[38] || keys[39] || keys[40])
+    player.moving = true;
+  else {
+    player.moving = false;
+  }
+
+  if (keys[37] && keys[38]) {
+      player.a = 225;
+      player.spriteDirection = 0;
+  }
+  else if (keys[38] && keys[39]) {
+      player.a = 315;
+      player.spriteDirection = 0;
+  }
+  else if (keys[39] && keys[40]) {
+      player.a = 45;
+      player.spriteDirection = 2;
+  }
+  else if (keys[40] && keys[37]) {
+      player.a = 135;
+      player.spriteDirection = 2;
+  }
+  else {
+    if (keys[37]) {
+      player.a = 180;
+      player.spriteDirection = 1;
+    }
+    if (keys[39]) {
+      player.a = 0;
+      player.spriteDirection = 3;
+    }
+    if (keys[38]) {
+      player.a = 270;
+      player.spriteDirection = 0;
+    }
+    if (keys[40]) {
+      player.a = 90;
+      player.spriteDirection = 2;
+    }
+  }
+  player.velX = Math.cos(player.a / 180 * Math.PI) * player.speed;
+  player.velY= Math.sin(player.a / 180 * Math.PI) * player.speed;
+
+  if (player.moving) {
+    player.x += player.velX;
+    player.y += player.velY;
+  }
+
+
+  if (player.x < 0)
+    player.x = 0;
+  if (player.x + (player.w * player.s)> cvs.width)
+    player.x = cvs.width - (player.w * player.s);
+  if (player.y < 0)
+    player.y = 0;
+  if (player.y + (player.h * player.s) > cvs.height)
+    player.y = cvs.height - (player.h * player.s);
+
+
+  if (!mousePrevPressed && mouse.pressed) {
+    random = Math.floor(Math.random() * image.sources.length);
+  }
+
+  if (player.moving) {
+    if (frame % 5 == 0) {
+      if (player.spriteAnimNum >= player.numOfSprites - 1) 
+        player.spriteAnimNum = 1;
+      else 
+        player.spriteAnimNum++;
+    }
+  }
+  else {
+    player.spriteAnimNum = 0;
+  }
+
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+  image.player.src = image.sources[random];
+
+  ctx.drawImage(player.img,
+    player.spriteAnimNum * player.spriteSize[0], player.spriteDirection * player.spriteSize[1],
+    player.spriteSize[0], player.spriteSize[1],
+    player.x, player.y, player.w * player.s, player.h * player.s);
+
+  frame++;
+
+  mousePrevPressed = mouse.pressed;
+}
+
+
+cvs.style.position = "absolute";
+cvs.style.background = "#FFF";
+window.onblur = () => { clearInterval(interval) };
+window.onfocus = () => { interval = setInterval(gameLoop, 1000/60) };
+window.onresize = () => {
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+};
+document.onkeydown = (e) => { keys[e.keyCode] = true; };
+document.onkeyup = (e) => { keys[e.keyCode] = false };
+document.onmousedown = (e) => { mouse.pressed = true; }
+document.onmouseup = (e) => { mouse.pressed = false; }
+document.onmousemove = function (e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+}
+document.body.appendChild(cvs);
+
+</script>
+</body>

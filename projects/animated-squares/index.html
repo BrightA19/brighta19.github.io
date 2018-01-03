@@ -1,0 +1,98 @@
+<body style="margin: 0; width: 100%; height: 100%; background: #111; overflow: hidden;">
+<script>
+
+var cvs = document.createElement("canvas");
+var ctx = cvs.getContext("2d");
+cvs.width = window.innerWidth;
+cvs.height = window.innerHeight;
+
+var interval,  fps;
+var mouse = { pressed: false }
+
+
+fps = 30;
+var mousePrevPressed = false;
+var mode = false;
+var boxes;
+var rows, cols;
+var color = 0;
+
+function gameInit() {
+  boxes = [];
+  cols = Math.ceil(cvs.width / 40);
+  rows = Math.ceil(cvs.height / 40);
+
+  for (var y = 0; y < rows; y++) {
+    for (var x = 0; x < cols; x++) {
+      boxes.push(new Box(x, y));
+    }
+  }
+}
+gameInit();
+
+function Box(x, y) {
+  this.x = x * 40;
+  this.y = y * 40;
+  this.w = 40;
+  this.h = 40;
+  this.opacity = 0;
+  this.opacityDir = 1;
+  this.delay = -(x + y);
+  this.update = function () {
+
+    if (++this.delay > 0)
+      this.opacity += 0.05 * this.opacityDir;
+
+    if (this.opacity > 1 || this.opacity < 0) {
+      this.opacityDir = -this.opacityDir;
+      this.opacity += 0.05 * this.opacityDir;
+    }
+
+    if (mode)
+      this.w = this.h = this.opacity * 40;
+    else
+      this.w = this.h = 40;
+
+  }
+  this.draw = function () {
+    ctx.save();
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = "hsl(" + color + ", 100%, 50%)";
+    ctx.fillRect(this.x, this.y, this.w, this.h);
+    ctx.restore();
+  }
+}
+
+function gameLoop() {
+
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+
+  if (++color > 355) color = 0;
+
+  if (!mousePrevPressed && mouse.pressed) mode = !mode;
+
+  for (var b in boxes) {
+    boxes[b].update();
+    boxes[b].draw();
+  }
+
+  mousePrevPressed = mouse.pressed;
+
+}
+
+
+cvs.style.position = "absolute";
+cvs.style.background = "#000";
+window.onblur = () => { clearInterval(interval) };
+window.onfocus = () => { interval = setInterval(gameLoop, 1000 / fps) };
+window.onresize = () => {
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+  gameInit();
+};
+document.onmousedown = () => { mouse.pressed = true; }
+document.onmouseup = () => { mouse.pressed = false; }
+document.body.appendChild(cvs);
+
+</script>
+</body>

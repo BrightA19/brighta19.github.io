@@ -1,0 +1,151 @@
+
+<body style="margin: 0; width: 100%; height: 100%; background: #111; overflow: hidden;">
+<script>
+
+var cvs = document.createElement("canvas");
+var ctx = cvs.getContext("2d");
+cvs.width = window.innerWidth;
+cvs.height = window.innerHeight;
+
+var interval, fps;
+var mouse = {
+  prevPressed: false,
+  pressed: false,
+  x: 0, y: 0
+}
+
+
+var poly = [
+  [[62, 15], [62, 30], [77, 15]],
+  [[62, 30], [77, 15], [77, 30]],
+  [[62, 30], [62, 45], [77, 30]],
+  [[62, 45], [77, 30], [77, 45]],
+  [[62, 45], [62, 60], [77, 45]],
+  [[62, 60], [77, 45], [77, 60]],
+  [[62, 60], [62, 75], [77, 60]],
+  [[62, 75], [77, 60], [77, 75]],
+  [[62, 75], [62, 85], [77, 89]],
+  [[62, 75], [77, 75], [77, 89]],
+  [[49, 109], [62, 85], [77, 89]], 
+  [[49, 109], [57, 124], [77, 89]],
+  [[49, 109], [49, 124], [57, 124]], 
+  [[38, 109], [49, 109], [49, 124]],
+  [[28, 124], [38, 109], [49, 124]], 
+  [[28, 109], [28, 124], [38, 109]],
+  [[20, 124], [28, 109], [28, 124]],
+  [[0, 89], [20, 124], [28, 109]],
+  [[0, 89], [15, 85], [28, 109]],
+  [[0, 77], [0, 89], [15, 77]],
+  [[0, 89], [15, 77], [15, 85]]
+];
+fps = 60;
+var sprites = [];
+
+function Sprite() {
+  this.x = mouse.x;
+  this.y = mouse.y;
+  this.delay = 8;
+  this.life = 450;
+  this.done = 0;
+  this.polygons = [];
+
+  for (var i = 0; i < poly.length; i++) {
+    this.polygons.push(new Poly(mouse.x, mouse.y, i, i * this.delay));
+  }
+
+}
+Sprite.prototype.update = function () {
+  for (var p in this.polygons) {
+    this.polygons[p].update();
+  }
+  if (--this.life <= fps) {
+    for (var p in this.polygons) {
+      this.polygons[p].opacity = this.life / fps;
+    }
+  }
+};
+Sprite.prototype.draw = function () {
+  for (var p in this.polygons) {
+    for (var i = 1; i <= 4; i++) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      this.polygons[p].draw(i);
+      ctx.restore();
+    }
+  }
+};
+
+
+function Poly(x, y, input, delay, m) {
+
+  this.points = poly[input];
+
+  this.x = x;
+  this.y = y;
+  this.delay = delay;
+  this.done = 0;
+  this.size = 1;
+  this.opacity = 1;
+  this.angle = 0;
+  this.distance = 38.5;
+}
+Poly.prototype.update = function () {
+  if (--this.delay > 0) return;
+  if (this.done < 1) this.done += 0.01;
+  this.opacity = this.done;
+  this.size = 1 / this.done;
+  this.angle = (this.done * 360) * (Math.PI / 180);
+  //this.distance = (this.done * 77) - 38.5;
+}
+Poly.prototype.draw = function (i) {
+  if (this.delay > 0) return;
+  ctx.rotate(i * (Math.PI / 2) + (Math.PI / 4) + this.angle);
+  ctx.beginPath();
+  ctx.moveTo((this.points[0][0] - this.distance) * this.size, (this.points[0][1] - this.distance) * this.size);
+  for (var p in this.points) {
+    ctx.lineTo((this.points[p][0] - this.distance) * this.size, (this.points[p][1] - this.distance) * this.size);
+  }
+  ctx.closePath();
+  ctx.globalAlpha = this.opacity;
+  ctx.fillStyle = (i % 2 == 0) ? "#a7a9ab" : "#14a69a";
+  ctx.fill();
+}
+
+
+function gameLoop() {
+
+  if (mouse.pressed && !mouse.prevPressed)
+    sprites.push(new Sprite());
+
+  mouse.prevPressed = mouse.pressed;
+
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  for (var s in sprites) {
+    if (sprites[s].life <= 0) {
+      delete sprites[sprites.indexOf(sprites[s])];
+      continue;
+    }
+    sprites[s].update();
+    sprites[s].draw();
+  }
+
+}
+
+
+
+cvs.style.position = "absolute";
+cvs.style.background = "#FFF";
+window.onblur = function () { clearInterval(interval) };
+window.onfocus = function () { interval = setInterval(gameLoop, 1000 / fps) };
+window.onresize = function () {
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+};
+document.onmousedown = function () { mouse.pressed = true; }
+document.onmouseup = function () { mouse.pressed = false; }
+document.onmousemove = function (e) { mouse.x = e.clientX; mouse.y = e.clientY }
+document.body.appendChild(cvs);
+
+</script>
+</body>
+

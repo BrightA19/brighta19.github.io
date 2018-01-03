@@ -1,0 +1,103 @@
+
+<body style="margin: 0; width: 100%; height: 100%; background: #111; overflow: hidden;">
+<script>
+
+var cvs = document.createElement("canvas");
+var ctx = cvs.getContext("2d");
+cvs.width = window.innerWidth;
+cvs.height = window.innerHeight;
+
+var interval, fps;
+var mouse = {
+  prevPressed: false,
+  pressed: false,
+  x: 0, y: 0
+}
+
+
+
+fps = 60;
+var sprites = [];
+
+function Sprite() {
+  this.x = mouse.x;
+  this.y = mouse.y;
+  this.life = 300;
+  this.done = 0;
+  this.size = 1;
+  this.opacity = 1;
+  this.angle = 0;
+  this.distance = 38.5;
+
+  this.points = [
+    [62, 15], [77, 15], [77, 89], [57, 124],
+    [20, 124], [0, 89], [0, 77], [15, 77],
+    [15, 85], [28, 109], [49, 109], [62, 85],
+  ];
+
+  this.update = function () {
+    if (this.done < 1) this.done += 0.01;
+    this.opacity = this.done;
+    this.size = 1 / this.done;
+    this.angle = (this.done * 360) * (Math.PI / 180);
+    this.distance = (this.done * 77) - 38.5;
+    if (--this.life <= fps) this.opacity = this.life / fps;
+  };
+  this.draw = function () {
+
+    for (var i = 1; i <= 4; i++) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(i * (Math.PI / 2) + (Math.PI / 4) + this.angle);
+      ctx.beginPath();
+      ctx.moveTo((this.points[0][0] - this.distance) * this.size, (this.points[0][1] - this.distance) * this.size);
+      for (var p in this.points) {
+        ctx.lineTo((this.points[p][0] - this.distance) * this.size, (this.points[p][1] - this.distance) * this.size);
+      }
+      ctx.closePath();
+      ctx.globalAlpha = this.opacity;
+      ctx.fillStyle = (i % 2 == 0) ? "#a7a9ab" : "#14a69a";
+      ctx.fill();
+      ctx.restore();
+    }
+
+  };
+}
+
+function gameLoop() {
+
+  if (mouse.pressed && !mouse.prevPressed)
+    sprites.push(new Sprite());
+
+  mouse.prevPressed = mouse.pressed;
+
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  for (var s in sprites) {
+    if (sprites[s].life <= 0) {
+      delete sprites[sprites.indexOf(sprites[s])];
+      continue;
+    }
+    sprites[s].update();
+    sprites[s].draw();
+  }
+
+}
+
+
+
+cvs.style.position = "absolute";
+cvs.style.background = "#FFF";
+window.onblur = function () { clearInterval(interval) };
+window.onfocus = function () { interval = setInterval(gameLoop, 1000 / fps) };
+window.onresize = function () {
+  cvs.width = window.innerWidth;
+  cvs.height = window.innerHeight;
+};
+document.onmousedown = function () { mouse.pressed = true; }
+document.onmouseup = function () { mouse.pressed = false; }
+document.onmousemove = function (e) { mouse.x = e.clientX; mouse.y = e.clientY }
+document.body.appendChild(cvs);
+
+</script>
+</body>
+
