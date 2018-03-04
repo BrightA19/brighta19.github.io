@@ -6,7 +6,7 @@ var ctx = cvs.getContext("2d");
 cvs.width = window.innerWidth;
 cvs.height = window.innerHeight;
 
-var interval;
+var interval, fps = 60;
 var keys = [];
 
 
@@ -33,8 +33,8 @@ function Particle() {
     ctx.globalAlpha = this.opacity;
     ctx.fillStyle = "#0af";
     ctx.fillRect(this.x, this.y, this.size, this.size);
-  }
-};
+  };
+}
 function gameLoop() {
   ctx.clearRect(0, 0, cvs.width, cvs.height);
   for (var p in particles) {
@@ -59,8 +59,6 @@ function gameLoop() {
 
 cvs.style.position = "absolute";
 cvs.style.background = "#000";
-window.onblur = () => { clearInterval(interval) };
-window.onfocus = () => { interval = setInterval(gameLoop, 20) };
 window.onresize = () => {
   cvs.width = window.innerWidth;
   cvs.height = window.innerHeight;
@@ -68,6 +66,8 @@ window.onresize = () => {
 document.onkeydown = (e) => { keys[e.keyCode] = true; };
 document.onkeyup = (e) => { keys[e.keyCode] = false; };
 document.body.appendChild(cvs);
+
+interval = setInterval(gameLoop, 1000 / fps);
 
 </script>
 </body>

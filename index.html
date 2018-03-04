@@ -68,7 +68,8 @@
     <script>
         setTimeout(function () {
             var m = new MouseEvent("click", {clientX: 6, clientY: 6})
-            menuButton.dispatchEvent(m);
+            if (menuOpen)
+              menuButton.dispatchEvent(m);
         }, 1500);
     </script>
     

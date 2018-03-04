@@ -83,16 +83,16 @@ function gameLoop() {
 
 cvs.style.position = "absolute";
 cvs.style.background = "#000";
-window.onblur = () => { clearInterval(interval) };
-window.onfocus = () => { interval = setInterval(gameLoop, 1000 / fps) };
 window.onresize = () => {
   cvs.width = window.innerWidth;
   cvs.height = window.innerHeight;
   gameInit();
 };
-document.onmousedown = () => { mouse.pressed = true; }
-document.onmouseup = () => { mouse.pressed = false; }
+document.onmousedown = () => { mouse.pressed = true; };
+document.onmouseup = () => { mouse.pressed = false; };
 document.body.appendChild(cvs);
+
+interval = setInterval(gameLoop, 1000 / fps);
 
 </script>
 </body>

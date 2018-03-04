@@ -6,7 +6,7 @@ var ctx = cvs.getContext("2d");
 cvs.width = window.innerWidth;
 cvs.height = window.innerHeight;
 
-var interval;
+var interval, fps = 60;
 var keys = [];
 var mouse = {
   pressed: false,
@@ -19,7 +19,7 @@ var image = {
   sources: [
     "https://i.stack.imgur.com/SsmWh.png",
     "https://opengameart.org/sites/default/files/mage%20walking%20poses%20sheet%20copy.png",
-    "http://opengameart.org/sites/default/files/lpc-art/professor_walk_cycle_no_hat.png",
+    "https://opengameart.org/sites/default/files/lpc-art/professor_walk_cycle_no_hat.png",
     "http://lpc.opengameart.org/static/lpc-style-guide/_images/soldier.png",
     "http://lpc.opengameart.org/static/lpc-style-guide/_images/soldier_altcolor.png",
     "http://lpc.opengameart.org/static/lpc-style-guide/_images/princess.png"
@@ -143,21 +143,21 @@ function gameLoop() {
 
 cvs.style.position = "absolute";
 cvs.style.background = "#FFF";
-window.onblur = () => { clearInterval(interval) };
-window.onfocus = () => { interval = setInterval(gameLoop, 1000/60) };
 window.onresize = () => {
   cvs.width = window.innerWidth;
   cvs.height = window.innerHeight;
 };
 document.onkeydown = (e) => { keys[e.keyCode] = true; };
 document.onkeyup = (e) => { keys[e.keyCode] = false };
-document.onmousedown = (e) => { mouse.pressed = true; }
-document.onmouseup = (e) => { mouse.pressed = false; }
+document.onmousedown = (e) => { mouse.pressed = true; };
+document.onmouseup = (e) => { mouse.pressed = false; };
 document.onmousemove = function (e) {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-}
+};
 document.body.appendChild(cvs);
+
+interval = setInterval(gameLoop, 1000 / fps);
 
 </script>
 </body>

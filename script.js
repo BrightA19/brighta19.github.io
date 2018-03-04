@@ -31,3 +31,9 @@ function toggleMenu() {
     menuOpen = !menuOpen;
     
 }
+
+view.onload = function () {
+    view.contentDocument.getElementById("description").innerHTML += 
+    " Click the button on the upper left to see some things I've done.";
+    view.onload = function () {};
+};

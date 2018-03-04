@@ -87,16 +87,16 @@ function gameLoop() {
 
 cvs.style.position = "absolute";
 cvs.style.background = "#FFF";
-window.onblur = function () { clearInterval(interval) };
-window.onfocus = function () { interval = setInterval(gameLoop, 1000 / fps) };
 window.onresize = function () {
   cvs.width = window.innerWidth;
   cvs.height = window.innerHeight;
 };
-document.onmousedown = function () { mouse.pressed = true; }
-document.onmouseup = function () { mouse.pressed = false; }
-document.onmousemove = function (e) { mouse.x = e.clientX; mouse.y = e.clientY }
+document.onmousedown = function () { mouse.pressed = true; };
+document.onmouseup = function () { mouse.pressed = false; };
+document.onmousemove = function (e) { mouse.x = e.clientX; mouse.y = e.clientY; };
 document.body.appendChild(cvs);
+
+interval = setInterval(gameLoop, 1000 / fps);
 
 </script>
 </body>
