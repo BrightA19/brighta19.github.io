@@ -18,7 +18,7 @@ function toggleMenu() {
     if (menuOpen) {
         menu.style.left = "-150px";
         cover.style.opacity = "0";
-        cover.style.right = "-" + innerWidth + "px";
+        cover.style.right = "-" + window.innerWidth + "px";
         menuButton.innerHTML = ">>";
     }
     else {
@@ -35,5 +35,4 @@ function toggleMenu() {
 view.onload = function () {
     view.contentDocument.getElementById("description").innerHTML += 
     " Click the button on the upper left to see some things I've done.";
-    view.onload = function () {};
 };

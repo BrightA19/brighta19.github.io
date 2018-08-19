@@ -15,30 +15,26 @@ var particles = [];
 function Particle() {
   this.x = Math.floor(Math.random() * cvs.width);
   this.y = cvs.height - 1;
-  this.velX = 0;
   this.velY = (Math.random() * 5) - 5;
   this.size = 15;
   this.maxlife = Math.floor(Math.random() * cvs.height/4) + 5;
   this.life = this.maxlife;
-  this.opacity = 1;
+  
   this.update = function () {
-    this.x += this.velX;
     this.y += this.velY;
-    this.opacity -= 2/this.maxlife;
-    this.life -= 2/this.maxlife;
-    if (this.opacity < 0)
-      this.opacity = 0;
+    this.life -= 2;
+    this.life = (this.life > 0) ? this.life : 0;
   };
   this.draw = function () {
-    ctx.globalAlpha = this.opacity;
-    ctx.fillStyle = "#0af";
+    ctx.globalAlpha = this.life / this.maxlife;
+    ctx.fillStyle = "hsl(" + (120 + (120 * (1 - this.life / this.maxlife))) + ", 100%, 50%)";
     ctx.fillRect(this.x, this.y, this.size, this.size);
   };
 }
 function gameLoop() {
   ctx.clearRect(0, 0, cvs.width, cvs.height);
   for (var p in particles) {
-    if (particles[p].y < 0 || particles[p].life < 0) {
+    if (particles[p].life <= 0) {
       particles[p] = new Particle();
       continue;
     }
@@ -49,8 +45,8 @@ function gameLoop() {
     particles[p].draw();
     particles[p].velY -= 0.01;
   }
-  if (particles.length < cvs.width * 4) {
-    for (var i = 0; i < (cvs.width * 4)/200; i++) {
+  if (particles.length < cvs.width * 2) {
+    for (var i = 0; i < (cvs.width * 2) / 100; i++) {
       particles.push(new Particle());
     }
   }
