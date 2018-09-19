@@ -1,0 +1,32 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    filter: blur(5px);
+    background: url("assets/images/background-day.png") #5ee270 top repeat-x;
+}
+.content {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+#game {
+    display: block;
+    border: 1px solid black;
+    box-shadow: 0 0 20px #888;
+    margin: 40px auto;
+    background: white;
+}
