@@ -29,13 +29,15 @@ function update() {
 function render() {
     clear();
 
-    for (let i = 1; i < path.length - 1; i++) {
+    for (let i = 0; i < path.length - 1; i++) {
         let a = i / path.length;
         ctx.beginPath();
         ctx.moveTo(path[i+1].x, path[i+1].y);
         ctx.lineTo(path[i].x, path[i].y);
         ctx.lineWidth = 1 + (a * (SIZE - 1));
+        ctx.lineCap = "round";
         ctx.strokeStyle = "hsla(" + Math.floor(color) + ", 100%, 50%, " + a + ")";
+        
         ctx.stroke();
     }
     
@@ -55,3 +57,4 @@ window.addEventListener("mousemove", function (e) {
 });
   
 main();
+  

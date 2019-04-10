@@ -267,15 +267,15 @@ function GameScreen() {
                 toggleDay = false;
             }
             
-            if (day)
+            if (day) {
                 dayOpacity = dayTransitionAnimation / 100;
-            else
-                dayOpacity = 1 - dayTransitionAnimation / 100;
-            if (!day)
-                nightOpacity = dayTransitionAnimation / 100;
-            else
                 nightOpacity = 1 - dayTransitionAnimation / 100;
-                
+            }
+            else {
+                dayOpacity = 1 - dayTransitionAnimation / 100;
+                nightOpacity = dayTransitionAnimation / 100;
+            }
+            
         }
         
         
